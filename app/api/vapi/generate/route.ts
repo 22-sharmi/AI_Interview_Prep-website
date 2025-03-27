@@ -1,13 +1,12 @@
 import {generateText} from 'ai'
 import {google} from '@ai-sdk/google'
-import { get } from 'http';
+
 import { getRandomInterviewCover } from '@/lib/utils';
-import { create } from 'domain';
 import { db } from '@/firebase/admin';
 export async function GET() {
     return Response.json({ success: true, data: "Thank you!" }, { status: 200 });
   }
-
+  
   export async function POST(request: Request) {
     const {type,role,level,techstack,amount,userid} = await request.json()
 
@@ -46,13 +45,3 @@ export async function GET() {
         return Response.json({success: false ,error},{status:500})
     }
   }
-
-
-//   {
-//     "type": "mixed",
-//     "role": "frontend",
-//     "level": "senior",
-//     "techstack": "next.js",
-//     "amount": "5",
-//     "userid":"o00boHAbHCbV1mnZgHxIdmUXa6m2"
-//     }

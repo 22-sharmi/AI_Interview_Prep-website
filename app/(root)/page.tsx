@@ -44,7 +44,15 @@ export default async function Home() {
         <div className="interviews-section">
           {hasPastInterviews ? (
             userInterviews?.map((interview) => (
-              <InterviewCard {...interview} key={interview.id} />
+              <InterviewCard
+              key={interview.id}
+              userId={user?.id}
+              id={interview.id}
+              role={interview.role}
+              type={interview.type}
+              techstack={interview.techstack}
+              createdAt={interview.createdAt}
+            />
             ))
           ) : (
             <p>You Haven&apos;t taken any interview yet</p>
@@ -57,7 +65,15 @@ export default async function Home() {
   
           {hasUpcomingInterviews ? (
             latestInterviews?.map((interview) => (
-              <InterviewCard {...interview} key={interview.id} />
+              <InterviewCard
+              key={interview.id}
+              userId={user?.id}
+              id={interview.id}
+              role={interview.role}
+              type={interview.type}
+              techstack={interview.techstack}
+              createdAt={interview.createdAt}
+            />
             ))
           ) : (
             <p>There are no interviews available</p>
