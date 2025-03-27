@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import InterviewCard from "@/components/InterviewCard";
 import {
-  getCurrentUser,
   getInterviewsByUserId,
   getLatestInterviews,
-} from "@/lib/actions/auth.action";
+} from "@/lib/actions/general.action";
+import { getCurrentUser } from "@/lib/actions/auth.action";
 
 export default async function Home() {
   const user = await getCurrentUser();
@@ -17,8 +17,8 @@ export default async function Home() {
     await getLatestInterviews({ userId: user?.id! }),
   ])
 
-  const hasPastInterviews = userInterviews?.length > 0;
-  const hasUpcomingInterviews = latestInterviews?.length > 0;
+  const hasPastInterviews = userInterviews?.length! > 0;
+  const hasUpcomingInterviews = latestInterviews?.length! > 0;
   return (
     <>
       <section className="card-cta">
@@ -62,7 +62,7 @@ export default async function Home() {
           ) : (
             <p>There are no interviews available</p>
           )}
-          
+
         </div>
       </section>
     </>
